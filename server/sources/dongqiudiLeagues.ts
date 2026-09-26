@@ -14,6 +14,7 @@ interface Res {
 }
 
 const tabId: Record<string, number> = {
+  "dongqiudi-toutiao": 1,
   "dongqiudi-epl": 3,
   "dongqiudi-seriea": 4,
   "dongqiudi-laliga": 5,
@@ -43,6 +44,7 @@ function league(id: string) {
 }
 
 export default defineSource({
+  "dongqiudi-toutiao": league("dongqiudi-toutiao"),
   "dongqiudi-epl": league("dongqiudi-epl"),
   "dongqiudi-seriea": league("dongqiudi-seriea"),
   "dongqiudi-laliga": league("dongqiudi-laliga"),

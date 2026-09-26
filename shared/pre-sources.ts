@@ -122,6 +122,17 @@ export const originSources = {
     title: "主干道热帖",
     type: "hottest",
     color: "red",
+    // 自定义子榜(路线2 2026-09-26):足球区热帖
+    sub: {
+      daily: {
+        title: "主干道热帖",
+        type: "hottest",
+      },
+      soccer: {
+        title: "足球区热帖",
+        type: "hottest",
+      },
+    },
   },
   "dongqiudi": {
     name: "懂球帝",
@@ -130,6 +141,54 @@ export const originSources = {
     column: "sports",
     color: "green",
     home: "https://www.dongqiudi.com",
+    // 自定义子榜(路线2 2026-09-26):api.dongqiudi.com/app/tabs/web/N.json 枚举所得
+    // (1=头条 3=英超 4=意甲 5=西甲 6=德甲 12=法甲 11=集锦),非公开接口,失效=改 dongqiudiLeagues.ts 里的数字
+    sub: {
+      toutiao: {
+        title: "头条",
+        type: "realtime",
+      },
+      epl: {
+        title: "英超",
+        type: "realtime",
+      },
+      seriea: {
+        title: "意甲",
+        type: "realtime",
+      },
+      laliga: {
+        title: "西甲",
+        type: "realtime",
+      },
+      bundesliga: {
+        title: "德甲",
+        type: "realtime",
+      },
+      ligue1: {
+        title: "法甲",
+        type: "realtime",
+      },
+      highlights: {
+        title: "集锦",
+        type: "realtime",
+      },
+    },
+  },
+  "sina-sports": {
+    name: "新浪体育",
+    title: "体育热榜",
+    type: "hottest",
+    column: "sports",
+    color: "volcano",
+    home: "https://sports.sina.com.cn",
+  },
+  "zhibo8": {
+    name: "直播吧",
+    title: "新闻",
+    type: "hottest",
+    column: "sports",
+    color: "orange",
+    home: "https://news.zhibo8.cc",
   },
   "aihot": {
     name: "AIHOT",

@@ -6,7 +6,7 @@ interface HotItem {
   mobileUrl: string
 }
 
-export default defineSource(async () => {
+const soccer = defineSource(async () => {
   const html: string = await myFetch(`https://bbs.hupu.com/soccer`)
 
   const regex = /<li class="bbs-sl-web-post-body">[\s\S]*?<a href="(\/[^"]+?\.html)"[^>]*?class="p-title"[^>]*>([^<]+)<\/a>/g
@@ -29,4 +29,8 @@ export default defineSource(async () => {
     })
   }
   return result
+})
+
+export default defineSource({
+  "hupu-soccer": soccer,
 })

@@ -11,7 +11,7 @@ function toTs(sec?: string): number {
   return Number.isFinite(n) && n > 0 ? n : 0
 }
 
-export default defineSource(async () => {
+const sports = defineSource(async () => {
   const day = new Date().toISOString().slice(0, 10).replace(/-/g, "")
   const raw: string = await myFetch(
     `https://top.sports.sina.com.cn/ws/GetTopDataList.php?top_type=day&top_cat=sports_suda&top_time=${day}&top_show_num=50`,
@@ -29,4 +29,8 @@ export default defineSource(async () => {
     }))
     .filter(x => x.title)
     .sort((a, b) => Number(b.extra.date) - Number(a.extra.date))
+})
+
+export default defineSource({
+  "sina-sports": sports,
 })
