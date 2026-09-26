@@ -12,12 +12,14 @@ function toTs(sec?: string): number {
 }
 
 const sports = defineSource(async () => {
-  const day = new Date().toISOString().slice(0, 10).replace(/-/g, "")
+  // top_time 按东八区日期取
+  const day = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10).replace(/-/g, "")
   const raw: string = await myFetch(
     `https://top.sports.sina.com.cn/ws/GetTopDataList.php?top_type=day&top_cat=sports_suda&top_time=${day}&top_show_num=50`,
   )
   const data = JSON.parse(raw.replace(/^var data = /, "").trim().replace(/;$/, ""))
-  const rows: SinaItem[] = data.result?.data ?? []
+  // 该接口响应形状随 UA/参数在 顶层 data 与 result.data 间变化,两种都兼容
+  const rows: SinaItem[] = data.data ?? data.result?.data ?? []
 
   return rows
     .map((x, i) => ({
